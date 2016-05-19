@@ -24,10 +24,10 @@ def convert(src, dst, vb="3M", verbose=False):
 
 
 def all_files(path='/'):
-    flists = ([os.path.join(path, f) for f in filenames] for path, _, filenames in os.walk(path))
-    for l in flists:
-        for i in l:
-            yield i
+    for path, _, filenames in os.walk(path):
+        for f in filenames:
+            yield os.path.join(path, f)
+
 
 
 def worker(vb, verbose, del_source, file_path):
@@ -39,7 +39,7 @@ def worker(vb, verbose, del_source, file_path):
             os.remove(dst)
         except OSError:
             pass
-        convert(f, dst, vb)
+        convert(f, dst, vb, verbose)
         dst_size = os.path.getsize(dst)
         src_size = os.path.getsize(f)
         if del_source and dst_size > 0: os.remove(f)  # if result done
