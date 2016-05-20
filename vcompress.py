@@ -9,9 +9,6 @@ from functools import partial
 
 
 def convert(src, dst, vb="3M", verbose=False):
-    # cmd = 'mencoder -o test.avi -ovc lavc -lavcopts vcodec=mpeg4:vbitrate=5000 -oac lavc test.MP4'
-    # cmd = "mencoder -o %s -ovc lavc -lavcopts vcodec=mpeg4:vbitrate=5000 -oac lavc %s" % (src,dst)
-    # cmd = "ffmpeg -i '%s' -b:v 64k -s 1024x768 -r 50 '%s'" % (src,dst)
     cmd = "ffmpeg -i '{}' -vb {} -r 50 '{}'".format(src, vb, dst)
     x = subprocess.Popen(
         cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -56,7 +53,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--path', help='path to directory with video files')
     parser.add_argument(
-        '--vb', help='bitrate default 3M (higher - more quality more disk space)', default="3M")
+        '--vb', help='bitrate default 3M'
+                     ' (higher - more quality more disk space)', default="3M")
     parser.add_argument('--verbose', help='show ffmpeg output', default=False)
     parser.add_argument(
         '--del_source', help='delete source files', default=False)
@@ -66,7 +64,8 @@ if __name__ == '__main__':
         print parser.print_help()
         exit()
 
-    print "processing path {} \nconvert to bitrate {}".format(args.path, args.vb)
+    print "processing path {} \n" \
+          "convert to bitrate {}".format(args.path, args.vb)
     cpus = multiprocessing.cpu_count()
     print "total cpus found: ", cpus
     pool = Pool(cpus)
@@ -87,8 +86,6 @@ if __name__ == '__main__':
     s0 = total[0] / (1024 * 1024)
     s1 = total[1] / (1024 * 1024)
     elapsed_time = time.time() - start_time
-    print "videos compressed info: {} mb -> {} mb : saved {} mb ".format(s0, s1, s0 - s1)
+    print "videos compressed info: {} mb -> {} mb" \
+          " : saved {} mb ".format(s0, s1, s0 - s1)
     print "time taken: ", elapsed_time
-
-# http://stackoverflow.com/questions/26959283/python-call-ffmpeg-command-line-with-subprocess
-# http://stackoverflow.com/questions/6906922/threading-subprocesses-in-python

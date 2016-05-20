@@ -1,0 +1,5 @@
+# http://stackoverflow.com/questions/26959283/python-call-ffmpeg-command-line-with-subprocess
+# http://stackoverflow.com/questions/6906922/threading-subprocesses-in-python
+# cmd = 'mencoder -o test.avi -ovc lavc -lavcopts vcodec=mpeg4:vbitrate=5000 -oac lavc test.MP4'
+# cmd = "mencoder -o %s -ovc lavc -lavcopts vcodec=mpeg4:vbitrate=5000 -oac lavc %s" % (src,dst)
+# cmd = "ffmpeg -i '%s' -b:v 64k -s 1024x768 -r 50 '%s'" % (src,dst)
