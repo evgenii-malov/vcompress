@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
+import argparse
 import subprocess
 import os
-from multiprocessing import Pool
 import time
 import multiprocessing
-import argparse
 from functools import partial
 
 
@@ -68,7 +67,7 @@ if __name__ == '__main__':
           "convert to bitrate {}".format(args.path, args.vb)
     cpus = multiprocessing.cpu_count()
     print "total cpus found: ", cpus
-    pool = Pool(cpus)
+    pool = multiprocessing.Pool(cpus)
     print "Process pool created with workers : {}".format(cpus)
     # '/media/se7en/bighdd/NEW-CAM-ARCHIVE2/185YBPHH'
     start_time = time.time()
