@@ -4,7 +4,7 @@ setup(
     name='vcompress',
     author='Evgeniy Malov',
     author_email='evgeniiml@gmail.com',
-    version='1.0',
+    version='1.1',
     url='https://github.com/evgenii-malov/vcompress',
     platforms='any',
     packages=['.',],

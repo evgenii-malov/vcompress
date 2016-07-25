@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 __author__ = "Evgeniy Malov"
-__version__ = "1.0"
+__version__ = "1.1"
 __maintainer__ = "Evgeniy Malov"
 __email__ = "evgeniiml@gmail.com"
 
